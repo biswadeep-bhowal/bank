@@ -87,7 +87,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR
 STATICFILES_DIRS = [ 'static' ]
 
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = join( BASE_DIR, 'media' )
 
 

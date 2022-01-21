@@ -8,4 +8,6 @@ class Transaction( models.Model ) :
     sender = models.ManyToManyField( Customer, related_name = 'sender' )
     receiver = models.ManyToManyField( Customer, related_name = 'receiver' )
 
+    amount = models.PositiveBigIntegerField( default = 0 )
+
     def str( self ) : return "{} to {}".format( self.sender.cust_id, self.receiver.cust_id )
