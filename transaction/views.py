@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from user import Customer
+from user.models import Customer
+from .models import Transaction
 
 def Deposit( request ) : pass
 
