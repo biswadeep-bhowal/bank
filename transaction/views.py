@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from user import Customer
 
-# Create your views here.
+def Deposit( request ) : pass
+
+def Withdraw( request ) : pass
+
+def Transfer( request ) : pass
