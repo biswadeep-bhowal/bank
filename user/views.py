@@ -5,17 +5,7 @@ from transaction import Transaction
 from user import Customer
 
 
-def Login( request ) :
-    
-    if request.method == 'POST' : pass
-
-    
-    return render( request, 'login.html', {} )
+def Login( request ) : return render( request, 'login.html', {} )
 
 
-def Register( request ) :
-    
-    if request.method == 'POST' : pass
-
-    
-    return render( request, 'register.html', { 'title' : 'Register | Bank' } )
+def Register( request ) : return render( request, 'register.html', {} )
