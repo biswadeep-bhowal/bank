@@ -35,6 +35,8 @@
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">   
 
+        {% if request.user.is_authenticated %}
+
 	<a class="navbar-brand" href="http://localhost:8000/"><h2>BANK</h2></a>
 
 	<ul class='navbar-nav'>
@@ -44,16 +46,35 @@
                 <li class='nav-item'>
                         <a class='nav-link' href="http://localhost:8000/transaction"><h4>TRANSACTIONS</h4></a>
                 </li>
-        </ul>
+        </ul>        
+
+        {% else %}
+
+        <a class="navbar-brand" href="http://localhost:8000/"><h2>BANK</h2></a>
+
+        {% endif %}
 
 	<div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav ml-auto">
+
+                        {% if request.user.is_authenticated %}
+			
+                        <li class="nav-item">
+				<a class="nav-link" href="http://localhost:8000/user/logout"><h4>LOGOUT</h4></a>
+			</li>
+
+                        {% else %}
+
 			<li class="nav-item">
 				<a class="nav-link" href="http://localhost:8000/user/login"><h4>LOGIN</h4></a>
 			</li>
+                        
 			<li class="nav-item">
 				<a class="nav-link" href="http://localhost:8000/user/register"><h4>REGISTER</h4></a>
 			</li>
+
+                        {% endif %}
+
 		</ul>
 	</div>
 </nav>

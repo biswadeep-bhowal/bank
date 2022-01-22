@@ -21,6 +21,10 @@ def Login( request ) :
     
     return render( request, 'login.html', {} )
 
+def Logout( request ) : 
+
+    logout( request )
+    return redirect( 'http://localhost:8000/' )
 
 def Register( request ) : 
     
@@ -36,17 +40,19 @@ def Register( request ) :
             confirm = request.POST[ 'confirm_password' ]
 
             search = User.objects.filter( username = username ).exists()
-            if password != confirm or search is True : return render( request, 'register.html', { 'Failed' : True } )
+            if password != confirm or search is True : return render( request, 'register.html', { 'message' : 'Registration Unsuccessful...' } )
 
             user = User.objects.create_user( first_name = first_name, last_name = last_name, username = username, password = password )
             user.save()
+
             customer = Customer( cust_id = random.randrange( 1000001, 9999999, 1 ), user = user )
             customer.save()
+
             login( request, user )
 
             return redirect( 'http://localhost:8000/' )
         
-        except Exception as e : return render( request, 'register.html', { 'message' : e } )
+        except Exception as e : return render( request, 'register.html', { 'message' : 'Registration Unsuccessful...' } )
     
     return render( request, 'register.html', {} )
 

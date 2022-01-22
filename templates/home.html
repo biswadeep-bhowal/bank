@@ -1,5 +1,7 @@
 {% extends 'common.html' %}
 
+{% block title %}   Home | Bank {% endblock %}
+
 {% block content %}
 <style>
     img{
@@ -7,6 +9,8 @@
     }
 </style>
 <br><br><br><br><br><br><br><br>
+
+    {% if request.user.is_authenticated %}
 
     <div class='container my-auto' >    
         <div class='card-group'>
@@ -40,5 +44,11 @@
         </div>
 
     </div>
+
+    {% else %}
+
+    <center><h1>Welcome To The Bank! Login or Register for our Searvices...</h1><center>
+
+    {% endif %}
    
 {% endblock %}
