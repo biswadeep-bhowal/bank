@@ -1,14 +1,29 @@
 {% extends 'common.html' %}
 
 {% block content %}
-
 <br><br><br><br><br>
+
 <center><h2>ACCOUNT DETAILS</h2></center>
+
 <br><br>
-<div style="margin-left: 100px;">
-<p>NAME:</p> <br>
-<p>USERNAME:</p> <br>
-<p>CUSTOMER ID:</p> <br>
-<p>CURRENT BALANCE:</p>
-</div>
+
+{% if request.user.is_authenticated %}
+
+    <div style="margin-left: 100px;">
+
+        <p> NAME : {{ request.user.get_full_name }}     </p>    <br>
+        <p> USERNAME : {{ request.user.get_username }}  </p>    <br>
+        <p> CUSTOMER ID : {{ customer.cust_id }}        </p>    <br>
+        <p> CURRENT BALANCE : {{ customer.balance }}    </p>    <br>
+        
+    </div>
+
+{% else %}
+
+    <center>
+        <div class = "alerts">Login To See Profile Details!</div>
+    </center>
+
+{% endif %}
+
 {% endblock %}

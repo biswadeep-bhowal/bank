@@ -6,5 +6,6 @@ class Customer( models.Model ) :
 
     user = models.OneToOneField( User, on_delete = models.CASCADE )
     cust_id = models.BigIntegerField( primary_key = True, default = 100000 )
+    balance = models.BigIntegerField( default = 0 )
 
-    def str( self ) : return self.user.get_full_name()
+    def __str__( self ) : return self.user.get_full_name()

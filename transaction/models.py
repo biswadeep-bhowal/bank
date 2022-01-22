@@ -10,4 +10,4 @@ class Transaction( models.Model ) :
 
     amount = models.PositiveBigIntegerField( default = 0 )
 
-    def str( self ) : return "{} to {}".format( self.sender.cust_id, self.receiver.cust_id )
+    def __str__( self ) : return "{} to {}".format( self.sender.cust_id, self.receiver.cust_id )
