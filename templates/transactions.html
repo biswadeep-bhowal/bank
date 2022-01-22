@@ -1,3 +1,39 @@
 {% extends 'common.html' %}
 
-{% block title %}   Transactions | Bank {% endblock %}
+{% block title %}   Transactions | Bank 
+{% endblock %}
+{% block content %}
+<br><br><br><br><br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        
+        <th scope="col">ID</th>
+        <th scope="col">SOURCE / DESTINATION</th>
+        <th scope="col">DEBIT / CREDIT</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <td>Mark</td>
+        <td>Otto</td>
+        <td class="text-danger">@mdo</td>
+      </tr>
+      <tr>
+        
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td class="text-success">@fat</td>
+      </tr>
+      <tr>
+        
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+{% endblock %}

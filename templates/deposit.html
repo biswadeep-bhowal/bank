@@ -1,5 +1,24 @@
 {% extends 'common.html' %}
 
-{% block content %}
+{% block title %}   Send Money | Bank {% endblock %}
 
+{% block content %}
+<br><br><br><br><br>
+<center>
+<form method="POST" action="" class="form-center">
+    {% csrf_token %}
+    <h3> DEPOSIT MONEY</h3> <br>
+        <div class="container">
+            <div class="row col-6">
+                <input type="number" name="amount" class="form-control col-10" placeholder="AMOUNT">
+            </div>
+            <br>
+            <div class="row col-6">
+                <h4>Current Balance:</h4>
+            </div>
+            <br>
+             <input type="submit" class="rounded-pill btn btn-dark" value="Deposit">
+        </div>
+</form>
+</center> 
 {% endblock %}
