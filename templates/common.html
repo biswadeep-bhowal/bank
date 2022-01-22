@@ -1,52 +1,58 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
-{% load static %}
-<link rel="stylesheet" href="{% static 'common.css'%}">
-  <!--BOOTSTRAP JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
-		  crossorigin="anonymous"></script>
-  
-  <!--BOOTSTRAP CSS-->  <!--Yhi baatein baad me yaad aayengi-->
-  <link rel="stylesheet" 
-  		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-		crossorigin="anonymous">
-{%block stylesheet %}
-{% endblock %}
-  <title>{% block title %} Sample Title {% endblock %} </title>
-  <style>
-          
-  </style>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap">
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'common.css'%}">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+                crossorigin="anonymous"></script>
+        
+        <link   rel="stylesheet" 
+                href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+                crossorigin="anonymous">
+        
+        {%block stylesheet %}
+        {% endblock %}
+
+        <title>{% block title %} Sample Title {% endblock %} </title>
+
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">   
+
 	<a class="navbar-brand" href="http://localhost:8000/"><h2>BANK</h2></a>
+
 	<ul class='navbar-nav'>
                 <li class='nav-item'>
-                        <a class='nav-link' href="user/profile"><h4>PROFILE</h4></a>
+                        <a class='nav-link' href="http://localhost:8000/user/profile"><h4>PROFILE</h4></a>
                 </li>
                 <li class='nav-item'>
                         <a class='nav-link' href=""><h4>TRANSACTIONS</h4></a>
                 </li>
         </ul>
+
 	<div class="collapse navbar-collapse" id="navbarText">
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="user/login"><h4>LOGIN</h4></a>
+				<a class="nav-link" href="http://localhost:8000/user/login"><h4>LOGIN</h4></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="user/register"><h4>REGISTER</h4></a>
+				<a class="nav-link" href="http://localhost:8000/user/register"><h4>REGISTER</h4></a>
 			</li>
 		</ul>
 	</div>
@@ -54,8 +60,10 @@
 
 
 <div class="container block-content col-12">
-{% block content %}
-{% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
 </div>
 
 
