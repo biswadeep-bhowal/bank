@@ -1,51 +1,62 @@
 {% extends 'common.html' %}
+
 {% block stylesheet %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'register.css'%}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'register.css'%}">
 {% endblock %}
+
+{% block title %}   Register | Bank {% endblock %}
+
 {% block content %}
+        
+<br><br><br><br><br><br><br><br><br>
+
 <center>
 
-    {% if submitted %}
+    <div style="margin-top: -50px;">
 
-        <div class="alert alert-dark" role="alert">
-            Form Submitted Successfully
-          </div>
+        <form method="post" action="" class="form-center" ">
 
-    {% else %}
+            {% csrf_token %} 
+            
+            <h3>REGISTER</h3><br>
+            
+            <div class="container">
+            
+                <div class="row col-6">
+                    <input type="text" name="first_name" class="form-control col-5 mx-3" placeholder="Firstname">
+                    <input type="text" name="last_name" class="form-control col-5 mx-3" placeholder="Lastname">
+                </div>
+            
+                <div class="row col-6 my-3">
+                    <input type="text" name="username" class="form-control col-10 mx-3" placeholder="Username">
+                </div>
+            
+                <div class="row col-6 my-3">
+                    <input type="password" name="password" class="form-control col-10 mx-4" placeholder="Password">
+                </div>
+            
+                <div class="row col-6 my-3">
+                    <input type="password" name="confirm_password" class="form-control col-10 mx-4" placeholder="Confirm Password">
+                </div>
+            
+                <input type="submit" value="REGISTER"  class=" btn rounded-pill btn-dark">
         
-        <br><br><br><br><br><br><br><br><br>
-
-
-        <center>
-
-            <div style="margin-top: -50px;">
-
-                <form method="post" action="" class="form-center" ">
-
-                    {% csrf_token %} 
-                            <h3>REGISTER</h3><br>
-                    <div class="container">
-                        <div class="row col-6">
-                            <input type="text" name="first_name" class="form-control col-5 mx-3" placeholder="Firstname">
-                            <input type="text" name="last_name" class="form-control col-5 mx-3" placeholder="Lastname">
-                        </div>
-                        <div class="row col-6 my-3">
-                            <input type="text" name="username" class="form-control col-10 mx-3" placeholder="Username">
-                        </div>
-                        <div class="row col-6 my-3">
-                            <input type="password" name="password" class="form-control col-10 mx-4" placeholder="Password">
-                        </div>
-                        <div class="row col-6 my-3">
-                            <input type="password" name="confirm_password" class="form-control col-10 mx-4" placeholder="Confirm Password">
-                        </div>
-                        <input type="submit" value="REGISTER"  class=" btn rounded-pill btn-dark">
-                </form>
             </div>
-        </center>
 
+        </form>
 
-    {% endif %}
+    </div>
 
 </center>
+
+{% if message %}
+    
+    <br>
+    <center>
+        <div class = "alert alert-dark">{{ message }}</div>
+    </center>
+
+{% endif %}
+
 {% endblock %}
