@@ -14,11 +14,21 @@
             </div>
             <br>
             <div class="row col-6">
-                <h4>Current Balance:</h4>
+                <h4>Current Balance : {{ customer.balance }}</h4>
             </div>
             <br>
              <input type="submit" class="rounded-pill btn btn-dark" value="Withdraw">
         </div>
 </form>
 </center> 
+
+{% if Failed %}
+
+    <br><br>
+    <center>
+        <div class = "alert alert-dark">Withdrawal Unsuccessful...</div>
+    </center>
+
+{% endif %}
+
 {% endblock %}
