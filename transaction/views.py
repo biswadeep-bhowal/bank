@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from user.models import Customer
 from .models import Transaction
+import random
 
 def Deposit( request ) : 
     
@@ -16,9 +18,15 @@ def Deposit( request ) :
             customer.balance = customer.balance + amount
             customer.save()
 
+            trans_id = random.randrange( 1000000000, 9999999999, 1 )
+            sender = customer.user
+
+            transaction = Transaction( trans_id = trans_id, amount = amount, sender = sender.id, receiver = 4 )
+            transaction.save()
+
             return render( request, 'deposit.html', { 'customer' : customer } )
 
-        except : return render( request, 'deposit.html', { 'customer' : customer, 'Failed' : True } )
+        except Exception as e: return render( request, 'deposit.html', { 'customer' : customer, 'Failed' : e } )
 
     return render( request, 'deposit.html', { 'customer' : customer } )
 
@@ -37,6 +45,12 @@ def Withdraw( request ) :
 
             customer.balance = customer.balance - amount
             customer.save()
+
+            trans_id = random.randrange( 1000000000, 9999999999, 1 )
+            sender = customer.user
+
+            transaction = Transaction( trans_id = trans_id, amount = amount, sender = sender.id, receiver = 3 )
+            transaction.save()
 
             return render( request, 'withdraw.html', { 'customer' : customer } )
 
@@ -66,9 +80,16 @@ def Transfer( request ) :
             customer.save()
             beneficiary.save()
 
+            trans_id = random.randrange( 1000000000, 9999999999, 1 )
+            sender = customer.user
+            receiver = beneficiary.user
+
+            transaction = Transaction( trans_id = trans_id, amount = amount, sender = sender.id, receiver = receiver.id )
+            transaction.save()            
+
             return render( request, 'transfer.html', { 'customer' : customer } )
 
-        except : return render( request, 'transfer.html', { 'customer' : customer, 'Failed' : True } )
+        except Exception as e: return render( request, 'transfer.html', { 'customer' : customer, 'Failed' : e } )
 
     return render( request, 'transfer.html', { 'customer' : customer } )
 
