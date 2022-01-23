@@ -9,4 +9,4 @@ class Transaction( models.Model ) :
     sender = models.PositiveBigIntegerField( null = True )
     receiver = models.PositiveBigIntegerField( null = True )
 
-    def __str__( self ) : return str( self.trans_id )
+    def __str__( self ) : return "{} {} {} {}".format( str( self.trans_id ), str( self.sender ), str( self.receiver ), str( self.amount ) )

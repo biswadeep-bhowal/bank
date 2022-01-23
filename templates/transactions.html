@@ -1,39 +1,43 @@
 {% extends 'common.html' %}
 
-{% block title %}   Transactions | Bank 
-{% endblock %}
+{% block title %}   Transactions | Bank {% endblock %}
+
 {% block content %}
+
 <br><br><br><br><br>
+
 <table class="table">
+
     <thead class="thead-dark">
-      <tr>
-        
+    <tr>
         <th scope="col">ID</th>
         <th scope="col">SOURCE / DESTINATION</th>
         <th scope="col">DEBIT / CREDIT</th>
-      </tr>
+    </tr>
+
     </thead>
+
     <tbody>
-      <tr>
+
+        {% for t in transactions %}
+
+        <tr>
+
+        <td>{{t.0}}</td>
+        <td>{{t.1}}</td>
+        {% if t.3 %}
+        <td class="text-success">{{ t.2 }}</td>
+        {% else %}
+        <td class="text-danger">{{ t.2 }}</td>
+        {% endif %}
         
-        <td>Mark</td>
-        <td>Otto</td>
-        <td class="text-danger">@mdo</td>
-      </tr>
-      <tr>
-        
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td class="text-success">@fat</td>
-      </tr>
-      <tr>
-        
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+
+        </tr>
+
+        {% endfor %}
+
     </tbody>
-  </table>
-  
-  
+
+</table>
+
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.db.models import Q
 from user.models import Customer
 from .models import Transaction
 import random
@@ -94,4 +95,24 @@ def Transfer( request ) :
     return render( request, 'transfer.html', { 'customer' : customer } )
 
 
-def Transactions( request ) : return render( request, 'transactions.html', {} )
+def Transactions( request ) : 
+    
+    customer = Customer.objects.get( user = request.user )
+    transactions = Transaction.objects.filter( Q( sender = customer.user.id ) | Q( receiver = customer.user.id ) )
+
+    T = []
+
+    for i in transactions : 
+
+        i = list( map( int, str( i ).split() ) )
+
+        if i[ 1 ] == customer.user.id :     
+
+            if i[ 2 ] == 3 :    T.append( [ i[ 0 ], "Withdrawal", "-{}".format( i[ 3 ] ), False ] )
+            elif i[ 2 ] == 4 :  T.append( [ i[ 0 ], "Deposit", "+{}".format( i[ 3 ] ), True ] )
+            else :              T.append( [ i[ 0 ], User.objects.get( id = i[ 2 ] ).get_full_name(), "-{}".format( i[ 3 ] ), False ] )
+
+        elif i[ 2 ] == customer.user.id : T.append( [ i[ 0 ], User.objects.get( id = i[ 1 ] ).get_full_name(), "+{}".format( i[ 3 ] ), True ] )
+
+
+    return render( request, 'transactions.html', { 'customer' : customer, 'transactions' : T } )
