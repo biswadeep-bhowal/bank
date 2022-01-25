@@ -95,7 +95,7 @@ def Transfer( request ) :
     return render( request, 'transfer.html', { 'customer' : customer } )
 
 
-def Transactions( request ) : 
+def Transactions( request ) :  
     
     customer = Customer.objects.get( user = request.user )
     transactions = Transaction.objects.filter( Q( sender = customer.user.id ) | Q( receiver = customer.user.id ) )
